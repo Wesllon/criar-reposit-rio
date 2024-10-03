@@ -1,0 +1,20 @@
+name: Testes-Automatizados
+
+on:
+  push:
+    branches:['main']
+  pull_request:
+    branches:['main']
+
+jobs:
+  executar_testes:
+    runs_on: ubuntu_latest
+
+    steps:
+      - uses: actions/ckeckout@v3
+      - uses: actions/setup-node@v4
+        with:
+          node_version: 18.x
+      
+      - run: npm install
+      - run: npm run test
